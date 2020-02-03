@@ -1,0 +1,50 @@
+<div id="main-box">
+  <h1>Hello! <%= current_user.name %></h1>
+  <hr>
+  <table>
+    <tr>
+      <th>Param</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td><b>ID</b></td>
+      <td><%= current_user.id %></td>
+    </tr>
+    <tr>
+      <td><b>UID</b></td>
+      <td><%= current_user.uid %></td>
+    </tr>
+    <tr>
+      <td><b>Name</b></td>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <td><b>Email</b></td>
+      <td><%= current_user.email %></td>
+    </tr>
+    <tr>
+      <td><b>Auth Provider</b></td>
+      <td><%= current_user.provider %></td>
+    </tr>
+    <tr>
+      <td><b>Admin?</b></td>
+      <td><%= current_user.admin %></td>
+    </tr>
+    <tr>
+      <td><b>Created At</b></td>
+      <td><%= current_user.created_at %></td>
+    </tr>
+    <tr>
+      <td><b>Updated At</b></td>
+      <td><%= current_user.updated_at %></td>
+    </tr>
+  </table>
+  <br>
+  <div class="button-group">
+    <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class: "button" %>
+    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button" %>
+    <% if current_user.admin %>
+      <%= button_to "Admin Dashboard", admin_dashboard_path, method: :get, class:"button" %>
+    <% end %>
+  </div>
+</div>

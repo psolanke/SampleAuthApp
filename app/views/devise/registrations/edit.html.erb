@@ -1,0 +1,44 @@
+<div id="main-box">
+  <h1>Edit my profile</h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <h6><%= render "devise/shared/error_messages", resource: resource %></h6>
+
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: "email", class: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :name, class: "text", placeholder: "Name", autofocus: true %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.password_field :password, class: "password", placeholder: "New Password", autocomplete: "new-password" %>
+      <i>(leave blank if you don't want to change it)</i> <br />
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, class: "password", placeholder: "Confirm New Password", autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "password", placeholder: "Current Password" %>
+      <i>(current password required to confirm your changes)</i><br />
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", class: "submit" %>
+    </div>
+  <% end %>
+  
+  <hr>
+  <h2>Cancel my account</h2>
+  <%= button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "cancel"%>
+</div>

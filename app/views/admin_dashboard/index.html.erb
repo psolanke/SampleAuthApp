@@ -1,0 +1,14 @@
+<div id="main-box">
+  <h1>All Users</h1>
+  <% @all_users.each do |user| %>
+    <table>
+      <%= user.attributes.each do |attr_key, attr_value| %>
+        <tr>
+          <td><%= attr_key %></td>
+          <td><%= attr_value %></td>
+        </tr>
+      <% end %>
+    </table>
+    <hr>
+  <% end %>
+</div>
